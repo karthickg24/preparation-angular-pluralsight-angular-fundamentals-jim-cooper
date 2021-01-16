@@ -10,13 +10,17 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
     <div>Price: \${{ event.price }}</div>
     <div>
       <span>Location: {{ event.location.address }}</span>
-      <span>&nbsp;</span>
-      <span>{{ event.location.city }}</span>
+      <span class="pad-left">{{ event.location.city }}</span>
     </div>
     <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>
   </div>
   `,
-  styles: []
+  styles: [
+    `
+    .pad-left { margin-left: 10px;}
+    .well div { color: #bbb;}
+    `
+  ]
 })
 export class EventThumbnailComponent implements OnInit {
   @Input() event: any;
