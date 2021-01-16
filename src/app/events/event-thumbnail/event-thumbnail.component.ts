@@ -3,8 +3,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-event-thumbnail',
   template: `
-      <h2>{{ event.name }}</h2>
+
   <div class="well hoverwell thumbnail">
+  <h2>{{ event.name }}</h2>
     <div>Date: {{ event.date }}</div>
     <div>Time: {{ event.time }}</div>
     <div>Price: \${{ event.price }}</div>
@@ -14,7 +15,14 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
     </div>
     <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>
   </div>
-  `
+  `,
+    styles: [
+      `
+      .thumbnail { min-height: 250px;}
+      .pad-left { margin-left: 10px;}
+      .well div { color: #bbb;}
+      `
+    ]
 })
 export class EventThumbnailComponent implements OnInit {
   @Input() event: any;

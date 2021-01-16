@@ -1,13 +1,13 @@
-<section>
+<div>
   <h1>Upcoming Angular Events</h1>
   <hr />
-  <app-event-thumbnail #thumbnail [event]="event1" (eventClick)="handleClicked($event)"></app-event-thumbnail>
-  <div class="well">
-    <div>
-      Hello world
+  <div class="row">
+    <div class="col-md-5" *ngFor="let event of events" >
+      <app-event-thumbnail [event]="event" #thumbnail (eventClick)="handleClicked($event)"></app-event-thumbnail>
     </div>
-    </div>
-  <h3>{{thumbnail.someProperty}}</h3>
-  <button class="btn btn-default" (click)="thumbnail.templeReferenceMethod()">Template Button</button>
 
-</section>
+
+  </div>
+
+
+</div>
