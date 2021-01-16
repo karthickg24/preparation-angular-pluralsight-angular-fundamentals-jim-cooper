@@ -2,27 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'event-list',
-  template: `
-    <section>
-      <h1>Upcoming Angular Events</h1>
-      <hr />
-      <h2>{{event.name}}</h2>
-      <div class="well hoverwell thumbnail">
-         <div> Date: {{event.date}} </div>
-         <div> Time: {{event.time }}  </div>
-         <div>Price: \${{event.price }}</div>
-          <div>
-            <span>Location: {{event.location.address}}</span>
-            <span>&nbsp;</span>
-            <span>{{event.location.city}}</span>
-          </div>
-      </div>
-    </section>
-
-  `
+  templateUrl: './event-list.component.html'
 })
 export class EventListComponent implements OnInit {
-  event =  {
+  event1 =  {
     id: 1,
     name: 'Angular Connect',
     date: '9/26/2020',
@@ -38,4 +21,8 @@ export class EventListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  handleClicked($event) {
+    console.log($event);
+  }
 }
