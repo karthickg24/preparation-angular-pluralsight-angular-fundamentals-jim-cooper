@@ -14,13 +14,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
     </div>
     <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>
   </div>
-  `,
-  styles: [
-    `
-    .pad-left { margin-left: 10px;}
-    .well div { color: #bbb;}
-    `
-  ]
+  `
 })
 export class EventThumbnailComponent implements OnInit {
   @Input() event: any;
