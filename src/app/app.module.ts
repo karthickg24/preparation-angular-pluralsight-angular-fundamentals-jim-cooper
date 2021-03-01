@@ -2,23 +2,52 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { EventListComponent } from './events/event-list/event-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
+import {
+  EventListComponent,
+  EventThumbnailComponent,
+  EventService,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventRouteActivatorService,
+  EventListResolverService
+} from './events/index';
 import { NavComponent } from './nav/nav.component';
-import { EventService } from './events/event-list/shared/event.service';
 import { ToastrService } from './common/shared/toastr.service';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
+import { PageNotFoundComponent } from './errors/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventListComponent,
     EventThumbnailComponent,
-    NavComponent
+    NavComponent,
+    EventDetailsComponent,
+    CreateEventComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [EventService, ToastrService],
+  providers: [
+    EventService,
+    ToastrService,
+    EventRouteActivatorService,
+    {
+      provide: 'canDeactivateNavigationfromCreateEvent',
+      useValue: checkDirtyState
+    },
+    EventListResolverService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component: CreateEventComponent) {
+  if (component.isDirty) {
+    return window.confirm('Do you want to leave the page without changes saved?');
+  }
+  return true;
+}
