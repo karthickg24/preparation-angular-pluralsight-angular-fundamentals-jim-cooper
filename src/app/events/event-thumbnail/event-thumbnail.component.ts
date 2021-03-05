@@ -19,7 +19,7 @@ import { IEvent } from '../shared/event.model';
       <span>Location: {{ event?.location?.address }}</span>
       <span class="pad-left">{{ event?.location?.city }}</span>
     </div>
-    <div class="" *ngIf="event?.onlineURL">Online: {{event?.onlineURL}}</div>
+    <div class="" *ngIf="event?.onlineUrl">Online: {{event?.onlineUrl}}</div>
     <button class="btn btn-primary" (click)="handleClickMe()">Click Me!</button>
   </div>
   `,
