@@ -16,6 +16,10 @@ import { ToastrService } from './common/shared/toastr.service';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { PageNotFoundComponent } from './errors/page-not-found.component';
+import { AuthService } from './user/auth.service';
+import { ProfileRouteActivatorService } from './user/profile/profile-route-activator.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './events/create-session/create-session.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +29,13 @@ import { PageNotFoundComponent } from './errors/page-not-found.component';
     NavComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
@@ -39,7 +46,9 @@ import { PageNotFoundComponent } from './errors/page-not-found.component';
       provide: 'canDeactivateNavigationfromCreateEvent',
       useValue: checkDirtyState
     },
+    ProfileRouteActivatorService,
     EventListResolverService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
