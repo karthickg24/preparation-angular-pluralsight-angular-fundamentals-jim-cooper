@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { IEvent } from '../shared/event.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IEvent, ISession } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
 @Component({
@@ -10,12 +10,32 @@ import { EventService } from '../shared/event.service';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   id: any;
-  constructor(private eventSerice: EventService,
-    private route: ActivatedRoute) { }
+  addMode = false;
+  constructor(private eventService: EventService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.event = this.eventSerice.getEvent(parseInt(this.id, 10));
+    this.event = this.eventService.getEvent(parseInt(this.id, 10));
+  }
+
+  showAddSession() {
+    // this.router.navigate(['/events/sessions/new']);
+    this.addMode = true;
+  }
+
+  saveNewSession(session: ISession) {
+    const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
+    session.id = nextId + 1;
+    this.event.sessions.push(session);
+    this.eventService.updateEvent(this.event);
+    this.addMode = false;
+
+  }
+
+  cancelAddSession() {
+    this.addMode = false;
   }
 
 }

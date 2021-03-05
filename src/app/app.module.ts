@@ -20,6 +20,8 @@ import { AuthService } from './user/auth.service';
 import { ProfileRouteActivatorService } from './user/profile/profile-route-activator.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/create-session/create-session.component';
+import { SessionListComponent } from './events/session-list/session-list.component';
+import { CollapsibleWellComponent } from './common/shared/collapsible-well/collapsible-well.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CreateSessionComponent } from './events/create-session/create-session.c
     EventDetailsComponent,
     CreateEventComponent,
     PageNotFoundComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,

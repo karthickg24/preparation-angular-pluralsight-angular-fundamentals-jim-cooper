@@ -19,7 +19,7 @@ export interface ILocation {
 export interface ISession {
     id: number;
     name: string;
-    presenter: number;
+    presenter: string;
     duration: number;
     level: string;
     abstract: string;
