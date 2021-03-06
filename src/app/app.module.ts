@@ -14,7 +14,7 @@ import {
   SessionListComponent
 } from './events/index';
 import { NavComponent } from './nav/nav.component';
-import { ToastrService } from './common/shared/toastr.service';
+// import { ToastrService } from './common/shared/services/toastr.service';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { PageNotFoundComponent } from './errors/page-not-found.component';
@@ -23,7 +23,9 @@ import { ProfileRouteActivatorService } from './user/profile/profile-route-activ
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/shared/components/collapsible-well/collapsible-well.component';
 import { DurationPipe } from './common/shared/pipes/duration.pipe';
+import { Toastr, TOASTR_TOKEN } from './common/shared/services/toastrUser.service';
 
+const toastr: Toastr = window['toastr'];
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +48,23 @@ import { DurationPipe } from './common/shared/pipes/duration.pipe';
   ],
   providers: [
     EventService,
-    ToastrService,
-    EventRouteActivatorService,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
+    //
+    // {
+    //   provide: TOASTR_TOKEN,
+    //   useExisting: toastr
+    // },
+    // here token is the class itself. whenever somebody uses this token to lookup something in
+    // dependency injection registry, we could actually use an object created by this class here.
+    // So, use the eventRouteActivatorService class to create an object and return that whenever somebody
+    // asks for an object using the EventRouteActivator class as the token.
+    {
+      provide: EventRouteActivatorService,
+      useClass: EventRouteActivatorService
+    },
     {
       provide: 'canDeactivateNavigationfromCreateEvent',
       useValue: checkDirtyState

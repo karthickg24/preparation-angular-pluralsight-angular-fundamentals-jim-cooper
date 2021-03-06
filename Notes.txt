@@ -1,0 +1,95 @@
+Providers are shared across modules
+Not imports/declarations.
+
+Template Driven Form - ideal for smaller forms
+Model Driven Form or Reacive Form
+- ideal for larger forms - for testability reasons
+- Unit Testable
+- validations written in component
+
+multiple validators using arrays
+
+
+Custom Validators are easy to do in reactive forms than in template based forms
+validators is simple function that returns null it input is valid or error object if input is invalid
+
+session-list:
+communication parent to child - input
+
+create-session
+communication child to parent - ouput
+
+content projection -> transclusion 
+Angular 1 Filters:
+
+Formatting:
+Sorting:
+Filtering:
+
+Angular 2 Pipes:
+
+Formatting
+
+
+Underhood the dependency injections system.
+InjectionToken;
+Inject() decoraor
+Third Party Global Service
+Alternate Provider Methods -fine grained
+
+toastr service  - wrapper of global object - unnecessary. 
+how to access global toastr without use of wrapper service and not by giving tree-shaking feature provided by ES6 modueless
+
+angular.module('appmodule).service('myservice', funcion( ) {
+
+})
+
+constructor(authService: AuthService)
+through string angular 1 registrers dependencies. 
+angular 2 we are using classes. that's key or token. This tells agular 2 to find the correct to give to us.
+
+what angular 2. its hijacking type declaration. This serves two puprposes
+1) to type it, so that javascript code we autocomplee intellisense.
+2) using typedeclaration to lookup the correct object inside dependency injection registry.
+
+service injection contex / dependency injection registry
+
+whenever we want to create a service, we create a class.
+
+But toastr is already object, we didn't create a toastr Class and we export use i as key in appmodule
+i can't import toastr class and then add it to providers array.  But i don't want this wrraper toastrService, but i need 
+some kind of key to give to angular, so hat it can use it as key to lookup item in registry.
+
+InjectionToken
+
+Angular Dependency Injector - so that i whenever if i want the instance of toastrClass, i cann use key or tken to 
+look it up and find he instance hat i want. 
+its Job is to simply create a token used for the dependency injectiion injectory in order to find the
+instance of the service we want
+
+
+we can goin to separate type decoration and key using inject() in constructor component or another service. 
+How can you use open token to register dependencies and avoid difficulties of using string for keys [as in angular 1]
+
+
+useClass used in long hand. if you want to use specific implementation in place of generic class
+
+useExisting , if you want to minize the api, when access Your absract class. it will create an object Class and intellize will
+minimal methods
+
+{ 
+    provide: MinimalLogger,
+    useExisting: Logger
+}
+
+
+https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular/
+
+-- snapshot.params
+
+https://medium.com/@tiboprea/accessing-url-parameters-in-angular-snapshot-vs-subscription-efc4e70f9053
+
+
+https://www.google.com/search?rlz=1C1GCEA_en&sxsrf=ALeKk03iWpzA1edP_BAHwzOn3cnj3Wf7UQ%3A1614345405837&ei=vfQ4YIbDMoziz7sPgpmGmAg&q=javascript+dom+manipulation+angular+10&oq=javascript+dom+manipulation+angular+10&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAELADEEM6AggAOgQIABBDOgYIABAWEB46CAghEBYQHRAeUOwSWLQ9YMVCaAJwAngBgAGSB4gBpSqSAQ0wLjEuNy4yLjEuMy4xmAEAoAEBqgEHZ3dzLXdpesgBCsABAQ&sclient=gws-wiz&ved=0ahUKEwjGldaj0YfvAhUM8XMBHYKMAYMQ4dUDCA0&uact=5
+
+https://indepth.dev/posts/1336/how-to-do-dom-manipulation-properly-in-angula
