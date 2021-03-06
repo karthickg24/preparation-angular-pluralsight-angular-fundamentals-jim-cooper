@@ -9,7 +9,9 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventRouteActivatorService,
-  EventListResolverService
+  EventListResolverService,
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index';
 import { NavComponent } from './nav/nav.component';
 import { ToastrService } from './common/shared/toastr.service';
@@ -19,9 +21,8 @@ import { PageNotFoundComponent } from './errors/page-not-found.component';
 import { AuthService } from './user/auth.service';
 import { ProfileRouteActivatorService } from './user/profile/profile-route-activator.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateSessionComponent } from './events/create-session/create-session.component';
-import { SessionListComponent } from './events/session-list/session-list.component';
-import { CollapsibleWellComponent } from './common/shared/collapsible-well/collapsible-well.component';
+import { CollapsibleWellComponent } from './common/shared/components/collapsible-well/collapsible-well.component';
+import { DurationPipe } from './common/shared/pipes/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CollapsibleWellComponent } from './common/shared/collapsible-well/colla
     PageNotFoundComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

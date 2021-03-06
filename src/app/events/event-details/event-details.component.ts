@@ -1,3 +1,4 @@
+// tslint:disable: no-inferrable-types
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IEvent, ISession } from '../shared/event.model';
@@ -10,7 +11,9 @@ import { EventService } from '../shared/event.service';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   id: any;
-  addMode = false;
+  addMode: boolean = false;
+  filterBy: string = 'all';
+  sortBy: string = 'votes';
   constructor(private eventService: EventService,
     private route: ActivatedRoute,
     private router: Router) { }
