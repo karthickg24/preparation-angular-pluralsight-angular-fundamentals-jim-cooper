@@ -18,6 +18,7 @@ export interface ILocation {
 
 export interface ISession {
     id: number;
+    eventId?: number;
     name: string;
     presenter: string;
     duration: number;

@@ -77,11 +77,34 @@ useClass used in long hand. if you want to use specific implementation in place 
 useExisting , if you want to minize the api, when access Your absract class. it will create an object Class and intellize will
 minimal methods
 
+
+useFactory: accepts the function, not a class. you can call function with parameteres - 
+
+
 { 
     provide: MinimalLogger,
     useExisting: Logger
 }
 
+this.route.params.forEach vs this.route.params.Subscribe  - google search
+
+paramMap vs params - google search
+
+paramMap - depreceated.
+
+Accessing Dom Node.
+    el: HTMLElement
+1) Constructor(ref: ElementRef) {
+    this.el = ref.nativeElement
+}
+2)ViewChild - #elementRef
+@ViewChild('')
+
+3)ViewChildren: list of elemets that have same ref. eg. ngFor
+#
+4) ContentChild, has to put ref variable in the content
+5) ContentChildren
+ 
 
 https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular/
 

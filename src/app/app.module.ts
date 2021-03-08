@@ -14,7 +14,7 @@ import {
   SessionListComponent
 } from './events/index';
 import { NavComponent } from './nav/nav.component';
-// import { ToastrService } from './common/shared/services/toastr.service';
+// import { ToastrService } from './common/shared/services/toastr-old.service';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { PageNotFoundComponent } from './errors/page-not-found.component';
@@ -23,9 +23,16 @@ import { ProfileRouteActivatorService } from './user/profile/profile-route-activ
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/shared/components/collapsible-well/collapsible-well.component';
 import { DurationPipe } from './common/shared/pipes/duration.pipe';
-import { Toastr, TOASTR_TOKEN } from './common/shared/services/toastrUser.service';
+import { Toastr, TOASTR_TOKEN } from './common/shared/services/toastr.service';
+import { SimpleModalComponent } from './common/shared/components/simple-modal/simple-modal.component';
+import { JQ_TOKEN } from './common/shared/services/jQuery.service';
+import { ModalTriggerDirective } from './common/shared/directives/modal-trigger.directive';
+import { UpvoteComponent } from './events/upvote/upvote.component';
+import { ValidateLocationOnlineurlDirective } from './events/create-event/validate-location-onlineurl.directive';
 
 const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +45,11 @@ const toastr: Toastr = window['toastr'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
+    UpvoteComponent,
+    ValidateLocationOnlineurlDirective
   ],
   imports: [
     BrowserModule,
@@ -51,6 +62,10 @@ const toastr: Toastr = window['toastr'];
     {
       provide: TOASTR_TOKEN,
       useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
     },
     //
     // {

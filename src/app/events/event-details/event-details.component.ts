@@ -1,6 +1,6 @@
 // tslint:disable: no-inferrable-types
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { IEvent, ISession } from '../shared/event.model';
 import { EventService } from '../shared/event.service';
 
@@ -19,8 +19,11 @@ export class EventDetailsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.event = this.eventService.getEvent(parseInt(this.id, 10));
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log(params);
+      this.event = this.eventService.getEvent(parseInt(params.get('id'), 10));
+      this.addMode = false;
+    });
   }
 
   showAddSession() {
