@@ -106,6 +106,36 @@ Accessing Dom Node.
 5) ContentChildren
  
 
+Promises                                            Observables
+
+Represent a Single Value that comes in              Represents 0 or more values that comes
+the future                                          now or future
+
+Asynchronous                                        Synchonous or Asynchronous
+
+
+https://medium.com/javascript-everyday/javascript-theory-promise-vs-observable-d3087bc1239a
+
+stream of data can also be manipulated by using map operators.
+
+1) Can be Synchronouse or Asynchronous.
+2) Improved Error Handling.
+4) Can be Closed Independently of Return a VAlue.
+5) Ca Deal with Time.
+
+Advanced Operations.
+    - Mathemetical Aggregation.
+    - Buffering - You can get several results together in Batches.
+    - Deboucing - You don't'get too many results if they happen so quickly.
+    - Distinct
+    -Filtering
+    - Combining Observables - Multi Observables.
+    - Built-In Retry Mechanism.
+
+Angular Has built in functionality in resolver. any observable that it gets, it will subscribe to itself.
+
+we don't have to make subscribe call 
+
 https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular/
 
 -- snapshot.params

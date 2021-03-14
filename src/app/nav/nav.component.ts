@@ -1,38 +1,44 @@
 // tslint:disable: no-inferrable-types
-import { Component, OnInit } from '@angular/core';
-import { EventService, ISession } from '../events';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { EventService, IEvent, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styles: [`
-  .nav.navbar-nav {
-    font-size: 15px;
-  }
+    .nav.navbar-nav {
+      font-size: 15px;
+    }
 
-#serchForm {
-  margin-right: 100px;
-}
+    #serchForm {
+      margin-right: 100px;
+    }
 
-@media (max-width: 1200px) {
-  #serchForm {
-    display: none;
-  }
-}
+    @media (max-width: 1200px) {
+      #serchForm {
+        display: none;
+      }
+    }
 
-li > a.active {
-  color: #F97924;
-}
-  `]
+    li > a.active {
+      color: #F97924;
+    }
+  `],
+  encapsulation: ViewEncapsulation.None
 })
+
 export class NavComponent implements OnInit {
   searchTerm: string = '';
   foundSessions: ISession[];
+  events: IEvent[];
   constructor(public authService: AuthService,
     private eventService: EventService) { }
 
   ngOnInit() {
+    this.eventService.getEvents().subscribe((events) => {
+      this.events = events;
+    });
   }
 
   searchSessions(searchTerm: string) {

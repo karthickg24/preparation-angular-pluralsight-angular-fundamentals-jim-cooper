@@ -9,6 +9,7 @@ import { VoterService } from '../shared/voter/voter.service';
   styleUrls: ['./session-list.component.css']
 })
 export class SessionListComponent implements OnInit, OnChanges {
+  @Input() eventId: string;
   @Input() sessions: ISession[];
   @Input() filterBy: string;
   @Input() sortBy: string;
@@ -39,9 +40,9 @@ export class SessionListComponent implements OnInit, OnChanges {
 
   toggleVote(session: ISession) {
     if (this.userHasVoted(session)) {
-      this.voter.deleteVoter(session, this.auth.currentUser.userName);
+      this.voter.deleteVoter(this.eventId, session, this.auth.currentUser.userName);
     } else {
-      this.voter.addVoter(session, this.auth.currentUser.userName);
+      this.voter.addVoter(this.eventId, session, this.auth.currentUser.userName);
     }
 
     if (this.sortBy === 'votes') {

@@ -8,7 +8,6 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivatorService,
   EventListResolverService,
   CreateSessionComponent,
   SessionListComponent
@@ -29,6 +28,9 @@ import { JQ_TOKEN } from './common/shared/services/jQuery.service';
 import { ModalTriggerDirective } from './common/shared/directives/modal-trigger.directive';
 import { UpvoteComponent } from './events/upvote/upvote.component';
 import { ValidateLocationOnlineurlDirective } from './events/create-event/validate-location-onlineurl.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { EventResolverService } from './events/event-details/event-resolver.service';
+import { EventDropdownComponent } from './events/event-list/event-dropdown/event-dropdown.component';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -49,13 +51,15 @@ const jQuery = window['$'];
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent,
-    ValidateLocationOnlineurlDirective
+    ValidateLocationOnlineurlDirective,
+    EventDropdownComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [
     EventService,
@@ -76,16 +80,17 @@ const jQuery = window['$'];
     // dependency injection registry, we could actually use an object created by this class here.
     // So, use the eventRouteActivatorService class to create an object and return that whenever somebody
     // asks for an object using the EventRouteActivator class as the token.
-    {
-      provide: EventRouteActivatorService,
-      useClass: EventRouteActivatorService
-    },
+    // {
+    //   provide: EventRouteActivatorService,
+    //   useClass: EventRouteActivatorService
+    // },
     {
       provide: 'canDeactivateNavigationfromCreateEvent',
       useValue: checkDirtyState
     },
     ProfileRouteActivatorService,
     EventListResolverService,
+    EventResolverService,
     AuthService
   ],
   bootstrap: [AppComponent]
