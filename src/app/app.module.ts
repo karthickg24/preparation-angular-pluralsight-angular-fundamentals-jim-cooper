@@ -30,7 +30,6 @@ import { UpvoteComponent } from './events/upvote/upvote.component';
 import { ValidateLocationOnlineurlDirective } from './events/create-event/validate-location-onlineurl.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { EventResolverService } from './events/event-details/event-resolver.service';
-import { EventDropdownComponent } from './events/event-list/event-dropdown/event-dropdown.component';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -51,8 +50,7 @@ const jQuery = window['$'];
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent,
-    ValidateLocationOnlineurlDirective,
-    EventDropdownComponent
+    ValidateLocationOnlineurlDirective
   ],
   imports: [
     BrowserModule,

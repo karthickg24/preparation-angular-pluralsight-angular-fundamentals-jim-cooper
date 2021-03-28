@@ -136,6 +136,23 @@ Angular Has built in functionality in resolver. any observable that it gets, it 
 
 we don't have to make subscribe call 
 
+
+Karma - Launch browses and run causes the browser to run your tests.
+
+Isolated Unit Tests
+    - class only
+    - You call the constructor of the class directly in test.
+    - simple
+    - best for services and pipes 
+    - Appropriate for directives and components if you priority is to only test code and not templated
+
+Integrated Unit Tests
+    - both template and class
+    - constructed by Framework
+    - complex
+    - Mostly used for components and directives
+    - Deep[parent/child] and shallow
+
 https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular/
 
 -- snapshot.params

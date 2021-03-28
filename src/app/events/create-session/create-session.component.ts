@@ -21,16 +21,11 @@ export class CreateSessionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.name = new FormControl('',
-      [Validators.required]);
-    this.presenter = new FormControl('',
-      [Validators.required]);
-    this.duration = new FormControl('',
-      [Validators.required]);
-    this.level = new FormControl('',
-      [Validators.required]);
-    this.abstract = new FormControl('',
-      [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
+    this.name = new FormControl('', [Validators.required]);
+    this.presenter = new FormControl('', [Validators.required]);
+    this.duration = new FormControl('', [Validators.required]);
+    this.level = new FormControl('', [Validators.required]);
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,

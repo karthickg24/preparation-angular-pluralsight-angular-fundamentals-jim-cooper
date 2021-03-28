@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { EventService, IEvent, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -29,6 +30,7 @@ import { AuthService } from '../user/auth.service';
 })
 
 export class NavComponent implements OnInit {
+  @Input() title: string;
   searchTerm: string = '';
   foundSessions: ISession[];
   events: IEvent[];
