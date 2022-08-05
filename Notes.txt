@@ -9,7 +9,6 @@ Model Driven Form or Reacive Form
 
 multiple validators using arrays
 
-
 Custom Validators are easy to do in reactive forms than in template based forms
 validators is simple function that returns null it input is valid or error object if input is invalid
 
@@ -60,15 +59,14 @@ But toastr is already object, we didn't create a toastr Class and we export use 
 i can't import toastr class and then add it to providers array.  But i don't want this wrraper toastrService, but i need 
 some kind of key to give to angular, so hat it can use it as key to lookup item in registry.
 
-InjectionToken
-
+Injection Token
+---------------
 Angular Dependency Injector - so that i whenever if i want the instance of toastrClass, i cann use key or tken to 
 look it up and find he instance hat i want. 
 its Job is to simply create a token used for the dependency injectiion injectory in order to find the
 instance of the service we want
 
-
-we can goin to separate type decoration and key using inject() in constructor component or another service. 
+we can going to separate type decoration and key using inject() in constructor component or another service. 
 How can you use open token to register dependencies and avoid difficulties of using string for keys [as in angular 1]
 
 
@@ -92,16 +90,17 @@ paramMap vs params - google search
 
 paramMap - depreceated.
 
-Accessing Dom Node.
+Accessing Dom Node
+------------------
     el: HTMLElement
-1) Constructor(ref: ElementRef) {
-    this.el = ref.nativeElement
-}
-2)ViewChild - #elementRef
-@ViewChild('')
+1)  Constructor(ref: ElementRef) {
+        this.el = ref.nativeElement
+    }
+2) ViewChild - #elementRef 
+    @ViewChild('')
 
-3)ViewChildren: list of elemets that have same ref. eg. ngFor
-#
+3) ViewChildren: list of elemets that have same ref. eg. ngFor
+
 4) ContentChild, has to put ref variable in the content
 5) ContentChildren
  
